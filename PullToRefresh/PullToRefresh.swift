@@ -106,7 +106,6 @@ public class PullToRefresh: NSObject {
             }
             let refreshViewHeight = refreshView.frame.size.height
             let refreshOffset = min(self.refreshOffset + refreshViewHeight, UIScreen.mainScreen().bounds.height / 6);
-            print(refreshOffset);
 
             switch offset {
             case 0 where (state != .Loading): state = .Initial
@@ -137,7 +136,7 @@ public class PullToRefresh: NSObject {
         previousScrollViewOffset.y = scrollView?.contentOffset.y ?? 0
     }
 
-    private func addScrollViewObserving() {
+    public func addScrollViewObserving() {
         guard let scrollView = scrollView where !isObserving else {
             return
         }
@@ -149,7 +148,7 @@ public class PullToRefresh: NSObject {
         isObserving = true
     }
 
-    private func removeScrollViewObserving() {
+    public func removeScrollViewObserving() {
         guard let scrollView = scrollView where isObserving else {
             return
         }
